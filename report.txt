@@ -1,0 +1,28 @@
+I started by loading by loading my data and checking neccessary things by viewing using .head(), then shape, then number of rows and column, checked datatype, missing values and duplicates.
+There were 937 duplicates in the dataset which was dropped, I also searched for missing values in all the columns and there were none. 
+After that I created a copy of the cleaned data where all the duplicates have been dropped.
+I identify my dependent variables from the dataset which happen to be 'quality' column. every other metrics are independent variables
+
+I used four classification models — Logistic Regression, Naive Bayes, Random Forest, and K-Nearest Neighbors (KNN) — which was trained to predict wine quality categorized as Bad, Average, Good, and Best.
+The dataset had 793 samples, with a strong class imbalance — “Good” wines dominate (504 samples), while “Bad” and “Best” classes are underrepresented.
+This imbalance directly affects performance: models tend to predict “Good” more accurately and struggle with minority classes.
+
+Precision and Recall Insights for the models shows “Good” wines has the highest precision (0.72–0.75) and recall (0.74–0.87), meaning the models identify good wines reliably and with few false positives.
+“Bad” and “Best” wines show very low recall and precision, meaning the models fail to detect these classes. For example, the loogistic Regression and Random Forest both have 0.00 recall for “Best” wines.
+“Bad” wines have recall < 0.40 across all models — most bad wines are misclassified as “Average” or “Good”.
+
+F1-Score Analysis: F1-score combines precision and recall, showing the Random Forest performed best overall (Weighted F1 = 0.69).
+The Naive Bayes model achieved the best macro-average F1 (0.47), implying it balances performance slightly better across all classes.
+“Best” and “Bad” wines consistently have poor F1 (<0.3) — suggesting the need for data balancing or feature re-engineering
+
+Acohol has the highest level of correlation with quality whether positive or negative. it has a positive correlation of 0.46 which is a good positive correlation.
+After Acohol is the density, which has a correlation of -0.34, which indicate a good negative correlation. followed by chlorides which has a negative correlation of -0.22, which also indicate a good negative correlation.
+Alcohol has the highest effect of the overall quality of wine.
+
+
+Business Impact Explanation: High accuracy for “Good” wines Positive The model can reliably identify wines of acceptable quality which is helpful for quality assurance and quick categorization.
+Low performance for “Best” wines Risk Missing “Best” wines could result in lost premium product opportunities, affecting marketing and pricing strategies.
+Low performance for “Bad” wines Quality Control Risk Misclassifying bad wines as good or average could damage brand reputation and increase customer dissatisfaction.
+Overall generalization (Random Forest) Stable Best trade-off between bias and variance, suitable as a baseline model for production after class rebalancing.
+
+Business Application Strategy: we can use the model as a decision-support tool, not as a final verdict. Combining predictions with expert tasting for high-value batches and flag uncertain predictions for manual review, especially around “Bad” and “Best” categories.
